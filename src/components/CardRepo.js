@@ -31,7 +31,17 @@ export default function CardRepo({ repo, onPress }) {
     };
 
     return (
-        <TouchableOpacity style={[styles.card, { backgroundColor: theme.card }]} onPress={onPress}>
+        <TouchableOpacity
+            style={[
+                styles.card,
+                {
+                    backgroundColor: theme.card,
+                    borderWidth: 1.5,
+                    borderColor: isDark ? "#444" : "#ccc",
+                },
+            ]}
+            onPress={onPress}
+        >
             <View style={{ flex: 1 }}>
                 <Animated.Text style={[styles.title, { color: theme.primary }]}>{repo.name}</Animated.Text>
                 <Animated.Text style={[styles.desc, { color: theme.subText }]}>{repo.description || "Sem descrição"}</Animated.Text>
@@ -41,18 +51,12 @@ export default function CardRepo({ repo, onPress }) {
             </View>
             <TouchableOpacity onPress={toggleFavorite}>
                 <Image
-                    source={
-                        isFavorite
-                            ? require("../assets/star-filled.png")
-                            : require("../assets/star-empty.png")
-                    }
+                    source={require("../assets/star-empty.png")}
                     style={[
                         styles.icon,
-                        { tintColor: isFavorite ? "#FFD700" : isDark ? "#fff" : "#000" }
+                        { tintColor: isFavorite ? "#FFD700" : isDark ? "#fff" : "#000" },
                     ]}
                 />
-
-
             </TouchableOpacity>
         </TouchableOpacity>
     );
@@ -66,10 +70,6 @@ const styles = StyleSheet.create({
         padding: 16,
         marginVertical: 8,
         borderRadius: 12,
-        backgroundColor: theme.card,
-        // borda visível
-        borderWidth: 1.5,
-        borderColor: isDark ? "#444" : "#ccc",
         // sombra Android
         elevation: 4,
         // sombra iOS
@@ -77,10 +77,23 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.15,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 6,
+        width: "50%",
+        alignSelf: "center"
     },
-
-    title: { fontSize: 18, fontWeight: "bold" },
-    desc: { fontSize: 14, marginVertical: 6 },
-    info: { fontSize: 12 },
-    icon: { width: 24, height: 24, resizeMode: "contain" }
+    title: {
+        fontSize: 18,
+        fontWeight: "bold"
+    },
+    desc: {
+        fontSize: 14,
+        marginVertical: 6
+    },
+    info: {
+        fontSize: 12
+    },
+    icon: {
+        width: 24,
+        height: 24,
+        resizeMode: "contain"
+    },
 });
