@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Animated,
-  View,
-  TextInput,
-  FlatList,
-  ActivityIndicator,
-  StyleSheet,
-} from "react-native";
+import { Animated, View, TextInput, FlatList, ActivityIndicator, StyleSheet } from "react-native";
 import api from "../services/api";
 import CardRepo from "../components/CardRepo";
 import Button from "../components/Button";
@@ -21,6 +14,7 @@ export default function Home({ navigation }) {
   const { theme, isDark } = useThemeContext();
 
   async function fetchRepos() {
+    if (!username) return;
     setLoading(true);
     setError("");
     try {
@@ -35,17 +29,18 @@ export default function Home({ navigation }) {
 
   return (
     <Animated.View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Header title="GitHub Explorer" />
+      <Header title="GitHub Explorer" navigation={navigation} />
       <View style={styles.content}>
         <TextInput
           placeholder="Digite o usuário do GitHub"
           value={username}
           onChangeText={setUsername}
+          onSubmitEditing={fetchRepos}
           style={[
             styles.input,
             {
               backgroundColor: theme.card,
-              color: isDark ? "#c9d1d9" : "#24292e", // ✅ texto digitado fixo por tema
+              color: isDark ? "#c9d1d9" : "#24292e",
             },
           ]}
           placeholderTextColor={isDark ? "#8b949e" : "#57606a"}
@@ -68,6 +63,7 @@ export default function Home({ navigation }) {
               onPress={() => navigation.navigate("Details", { repo: item })}
             />
           )}
+          showsVerticalScrollIndicator={true}
         />
       </View>
     </Animated.View>
@@ -75,8 +71,14 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  content: { flex: 1, padding: 16 },
+  container: { 
+    flex: 1, 
+    padding: 20
+  },
+  content: { 
+    flex: 1, 
+    padding: 16 
+  },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",

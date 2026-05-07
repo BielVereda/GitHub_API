@@ -1,4 +1,3 @@
-// src/context/ThemeContext.js
 import React, { createContext, useContext, useRef, useState } from "react";
 import { Animated } from "react-native";
 import { darkTheme, lightTheme } from "../styles/theme";
@@ -19,7 +18,6 @@ export function ThemeProvider({ children }) {
         setIsDark(!isDark);
     }
 
-    // interpolação das cores
     const theme = {
         background: animation.interpolate({
             inputRange: [0, 1],
