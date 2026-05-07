@@ -51,16 +51,16 @@ git clone https://github.com/seu-usuario/github-explorer.git
 
 2. Instale as dependências:
 ```
-npm install
+npm i
 ```
 # ou
 ```
 yarn install
 ```
 
-3. Execute o projeto:
+3. Execute o projeto na Web:
 ```
-npm start
+npx expo start
 ```
 # ou
 ```
