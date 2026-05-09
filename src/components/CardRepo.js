@@ -51,7 +51,7 @@ export default function CardRepo({ repo, onPress }) {
             </View>
             <TouchableOpacity onPress={toggleFavorite}>
                 <Image
-                    source={require("../assets/star-empty.png")}
+                    source={require("../assets/star-filled.png")}
                     style={[
                         styles.icon,
                         { tintColor: isFavorite ? "#FFD700" : isDark ? "#fff" : "#000" },
