@@ -45,7 +45,7 @@ export default function Home({ navigation }) {
           ]}
           placeholderTextColor={isDark ? "#8b949e" : "#57606a"}
         />
-        <Button title="Buscar Repositórios" onPress={fetchRepos} />
+        <Button title="Buscar Repositórios do Usuário" onPress={fetchRepos}/>
 
         {loading && <ActivityIndicator size="large" color={theme.primary} />}
         {error !== "" && (
