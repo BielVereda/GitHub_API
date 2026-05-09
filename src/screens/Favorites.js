@@ -20,7 +20,7 @@ export default function Favorites({ navigation }) {
 
     return (
         <Animated.View style={[styles.container, { backgroundColor: theme.background }]}>
-            <Header title="Favoritos" navigation={navigation} />
+            <Header title="Favoritos" navigation={navigation} showBack />
             <View style={styles.content}>
                 <FlatList
                     data={favorites}
@@ -41,11 +41,12 @@ export default function Favorites({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: { 
-        flex: 1 
+    container: {
+        flex: 1,
+        padding: 20
     },
-    content: { 
-        flex: 1, 
-        padding: 16 
+    content: {
+        flex: 1,
+        padding: 16
     },
 });
