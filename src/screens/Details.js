@@ -34,7 +34,7 @@ export default function Details({ route, navigation }) {
     style={[styles.icon, { tintColor: isDark ? "#fff" : "#000" }]}
   />
   <Animated.Text style={[styles.buttonText, { color: isDark ? "#fff" : "#000" }]}>
-    Abrir no GitHub
+    Abrir Repositório
   </Animated.Text>
   <Image
     source={isDark ? require("../assets/arrow-light.png") : require("../assets/arrow-dark.png")}
